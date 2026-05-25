@@ -9,6 +9,7 @@ def call_api(prompt: str):
     api_key = os.getenv("OPENAI_API_KEY")
     base_url = os.getenv("OPENAI_API_BASE_URL")
     model = os.getenv("MODEL")
+    sys_prompt = os.getenv("SYS_PROMPT", "You are a helpful assistant.")
 
     if not api_key:
         raise ValueError("OPENAI_API_KEY environment variable not set.")
@@ -21,7 +22,7 @@ def call_api(prompt: str):
     response = client.chat.completions.create(
         model = model,
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "system", "content": sys_prompt},
             {"role": "user", "content": prompt}
         ]
     )

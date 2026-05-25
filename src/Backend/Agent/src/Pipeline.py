@@ -1,7 +1,7 @@
-from Tools.api_call import call_api
+from Utils.api_call import call_api
 
 def main():
-    prompt = "What is the capital of France?"
+    prompt = input("Enter a prompt for the API: ")
     response = call_api(prompt)
     print(f"Response from API: {response}")
 
